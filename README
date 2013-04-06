@@ -2,17 +2,17 @@ This is a working sample of Play, Akka and RabbitMQ, the implementation coming f
 java.dzone.com/articles/connect-rabbitmq-using-scala
 
 To get up and running on Mac OS, first install RabbitMQ
-brew install rabbitmq
+     brew install rabbitmq
 
 As RabbitMQ is written in Erlang it will pull that down first.
 
 Note, this doesn't add rabbitmq-server to your path, so you might want to add PATH=$PATH:/usr/local/sbin to your .bash_profile
 
 Once that's done, start the rabbitmq server with 
-rabbitmq-server
+     rabbitmq-server
 
 Start Play Framework with
-play run
+     play run
 
 Browse to localhost:9000, which will launch the vanilla template that comes with Play.  
 
