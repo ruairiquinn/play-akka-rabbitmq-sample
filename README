@@ -1,4 +1,21 @@
-This is your new Play 2.0 application
-=====================================
+This is a working sample of Play, Akka and RabbitMQ, the implementation coming from this post: 
+java.dzone.com/articles/connect-rabbitmq-using-scala
 
-This file will be packaged with your application, when using `play dist`.
+To get up and running on Mac OS, first install RabbitMQ
+brew install rabbitmq
+
+As RabbitMQ is written in Erlang it will pull that down first.
+
+Note, this doesn't add rabbitmq-server to your path, so you might want to add PATH=$PATH:/usr/local/sbin to your .bash_profile
+
+Once that's done, start the rabbitmq server with 
+rabbitmq-server
+
+Start Play Framework with
+play run
+
+Browse to localhost:9000, which will launch the vanilla template that comes with Play.  
+
+Behind the scenes, the onStart() method in our Global.scala invokes Sender.startSending(). This method creates a RabbitMQ connection, a sending channel and declares the queue to use.
+The Akka scheduler is used to send a message to the SendingActor every second, which publishes a message to our queue and logs the output to the console.
+A couple of ListeningActors are then created which consume messages from the queue in a round robin fashion.
